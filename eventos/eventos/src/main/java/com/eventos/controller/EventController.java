@@ -43,12 +43,12 @@ public class EventController {
     return ResponseEntity.ok(this.objIEventService.findById(id));
   }
 
-  @PutMapping(path = "/update/{id}")
+  @PutMapping(path = "/{id}")
   public ResponseEntity<Event> update(@PathVariable Long id, @RequestBody Event objEvent) {
     return ResponseEntity.ok(this.objIEventService.update(id, objEvent));
   }
 
-  @DeleteMapping(path = "/delete/{id}")
+  @DeleteMapping(path = "/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     this.objIEventService.delete(id);
     return ResponseEntity.noContent().build();
