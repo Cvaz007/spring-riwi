@@ -24,7 +24,7 @@ public class Submission {
     private String content;
 
     @Column(name = "submission_date")
-    private Date submissiontDate;
+    private Date submissionDate;
 
     @Column(precision = 5, scale = 2)
     private BigDecimal grade;
