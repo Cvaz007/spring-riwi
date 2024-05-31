@@ -24,16 +24,16 @@ import java.util.Optional;
 public class MessageService implements IMessageService {
 
     @Autowired
-    private MessageRepository messageRepository;
+    private final MessageRepository messageRepository;
 
     @Autowired
-    private MessageMapper messageMapper;
+    private final MessageMapper messageMapper;
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     @Override
     public MessageResponse create(MessageRequest messageRequest) {
@@ -53,7 +53,7 @@ public class MessageService implements IMessageService {
     }
 
     @Override
-    public MessageResponse update(Integer id, MessageRequest messageRequest) {
+    public MessageResponse update(Long id, MessageRequest messageRequest) {
         Message existingMessage = messageRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("LESSON", id));
 
@@ -63,7 +63,7 @@ public class MessageService implements IMessageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         messageRepository.deleteById(id);
     }
 
@@ -74,7 +74,7 @@ public class MessageService implements IMessageService {
     }
 
     @Override
-    public Optional<MessageResponse> getById(Integer id) {
+    public Optional<MessageResponse> getById(Long id) {
         Optional<Message> message = messageRepository.findById(id);
         if (message.isEmpty()) throw new IdNotFoundException("LESSON", id);
         return message.map(messageMapper::toMessageResponse);

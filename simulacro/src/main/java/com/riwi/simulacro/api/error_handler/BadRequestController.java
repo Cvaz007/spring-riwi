@@ -25,6 +25,15 @@ public class BadRequestController {
                 .build();
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public BaseErrorResponse handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ErrorResponse.builder()
+                .message("Invalid value for enum: " + ex.getMessage())
+                .status(HttpStatus.BAD_REQUEST.name())
+                .code(HttpStatus.BAD_REQUEST.value())
+                .build();
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public BaseErrorResponse handleErrors(MethodArgumentNotValidException exception) {
         List<String> errors = new ArrayList<>();

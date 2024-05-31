@@ -24,16 +24,16 @@ import java.util.Optional;
 public class SubmissionService implements ISubmissionService {
 
     @Autowired
-    private SubmissionRepository submissionRepository;
+    private final SubmissionRepository submissionRepository;
 
     @Autowired
-    private SubmissionMapper submissionMapper;
+    private final SubmissionMapper submissionMapper;
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private AssignmentRepository assignmentRepository;
+    private final AssignmentRepository assignmentRepository;
 
     @Override
     public SubmissionResponse create(SubmissionRequest submissionRequest) {
@@ -50,7 +50,7 @@ public class SubmissionService implements ISubmissionService {
     }
 
     @Override
-    public SubmissionResponse update(Integer id, SubmissionRequest submissionRequest) {
+    public SubmissionResponse update(Long id, SubmissionRequest submissionRequest) {
         Submission existingSubmission = submissionRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("ENROLLMENT", id));
 
@@ -60,7 +60,7 @@ public class SubmissionService implements ISubmissionService {
     }
 
     @Override
-    public void delete(Integer uuid) {
+    public void delete(Long uuid) {
         submissionRepository.deleteById(uuid);
     }
 
@@ -71,7 +71,7 @@ public class SubmissionService implements ISubmissionService {
     }
 
     @Override
-    public Optional<SubmissionResponse> getById(Integer uuid) {
+    public Optional<SubmissionResponse> getById(Long uuid) {
         Optional<Submission> submission = submissionRepository.findById(uuid);
         if (submission.isEmpty()) throw new IdNotFoundException("ENROLLMENT", uuid);
         return submission.map(submissionMapper::toSubmissionResponse);

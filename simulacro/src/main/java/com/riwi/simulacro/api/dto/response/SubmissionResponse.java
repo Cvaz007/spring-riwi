@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubmissionResponse {
-    private Integer id;
+    private Long id;
     private String content;
     private Date submissionDate;
     private BigDecimal grade;

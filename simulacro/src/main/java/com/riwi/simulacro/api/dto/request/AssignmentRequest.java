@@ -15,5 +15,5 @@ public class AssignmentRequest {
     private String assignmentTitle;
     private String description;
     private Date dueDate;
-    private Integer lessonId;
+    private Long lessonId;
 }

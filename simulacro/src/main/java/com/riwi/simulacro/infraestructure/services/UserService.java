@@ -21,10 +21,10 @@ import java.util.Optional;
 public class UserService implements IUserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Override
     public UserResponse create(UserRequest userRequest) {
@@ -35,7 +35,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse update(Integer id, UserRequest userRequest) {
+    public UserResponse update(Long id, UserRequest userRequest) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("ASSIGNMENT", id));
 
@@ -45,7 +45,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 
@@ -56,7 +56,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<UserResponse> getById(Integer id) {
+    public Optional<UserResponse> getById(Long id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty()) throw new IdNotFoundException("ASSIGNMENT", id);
         return user.map(userMapper::toUserResponse);

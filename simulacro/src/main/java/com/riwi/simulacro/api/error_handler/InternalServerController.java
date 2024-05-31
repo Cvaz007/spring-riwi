@@ -19,4 +19,13 @@ public class InternalServerController {
                 .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
     }
+
+    @ExceptionHandler(Exception.class)
+    public BaseErrorResponse handleGlobalException(Exception ex) {
+        return ErrorResponse.builder()
+                .message("An unexpected error occurred: " + ex.getMessage())
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.name())
+                .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .build();
+    }
 }

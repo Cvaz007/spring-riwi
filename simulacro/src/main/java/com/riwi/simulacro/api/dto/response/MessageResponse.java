@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageResponse {
-    private Integer id;
+    private Long id;
     private String messageContent;
     private Date sentDate;
 }

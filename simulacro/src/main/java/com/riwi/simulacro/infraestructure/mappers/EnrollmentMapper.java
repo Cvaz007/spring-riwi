@@ -6,13 +6,22 @@ import com.riwi.simulacro.domain.entities.Enrollment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class, CourseMapper.class})
 public interface EnrollmentMapper {
-    @Mapping(target = "id", ignore = true)
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "courseId.id", source = "courseId"),
+            @Mapping(target = "userId.id", source = "userId")
+    })
     Enrollment toEnrollment(EnrollmentRequest enrollmentRequest);
 
     EnrollmentResponse toEnrollmentResponse(Enrollment enrollment);
 
+    @Mappings({
+            @Mapping(target = "courseId.id", source = "courseId"),
+            @Mapping(target = "userId.id", source = "userId")
+    })
     void updateFromEnrollmentRequest(EnrollmentRequest enrollmentRequest, @MappingTarget Enrollment enrollment);
 }

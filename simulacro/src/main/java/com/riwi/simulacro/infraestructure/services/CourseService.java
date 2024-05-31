@@ -22,13 +22,13 @@ import java.util.Optional;
 public class CourseService implements ICourseService {
 
     @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     @Autowired
-    private CourseMapper courseMapper;
+    private final CourseMapper courseMapper;
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public CourseResponse create(CourseRequest courseRequest) {
@@ -42,7 +42,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public CourseResponse update(Integer id, CourseRequest courseRequest) {
+    public CourseResponse update(Long id, CourseRequest courseRequest) {
         Course existingCourse = courseRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("COURSE", id));
 
@@ -52,7 +52,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         courseRepository.deleteById(id);
     }
 
@@ -63,7 +63,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public Optional<CourseResponse> getById(Integer id) {
+    public Optional<CourseResponse> getById(Long id) {
         Optional<Course> course = courseRepository.findById(id);
         if (course.isEmpty()) throw new IdNotFoundException("COURSE", id);
         return course.map(courseMapper::toCourseResponse);

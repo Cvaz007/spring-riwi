@@ -23,16 +23,16 @@ import java.util.Optional;
 @AllArgsConstructor
 public class EnrollmentService implements IEnrollmentService {
     @Autowired
-    private EnrollmentRepository enrollmentRepository;
+    private final EnrollmentRepository enrollmentRepository;
 
     @Autowired
-    private EnrollmentMapper enrollmentMapper;
+    private final EnrollmentMapper enrollmentMapper;
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     @Override
     public EnrollmentResponse create(EnrollmentRequest enrollmentRequest) {
@@ -49,7 +49,7 @@ public class EnrollmentService implements IEnrollmentService {
     }
 
     @Override
-    public EnrollmentResponse update(Integer id, EnrollmentRequest enrollmentRequest) {
+    public EnrollmentResponse update(Long id, EnrollmentRequest enrollmentRequest) {
         Enrollment existingEnrollment = enrollmentRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("ENROLLMENT", id));
 
@@ -59,7 +59,7 @@ public class EnrollmentService implements IEnrollmentService {
     }
 
     @Override
-    public void delete(Integer uuid) {
+    public void delete(Long uuid) {
         enrollmentRepository.deleteById(uuid);
     }
 
@@ -70,7 +70,7 @@ public class EnrollmentService implements IEnrollmentService {
     }
 
     @Override
-    public Optional<EnrollmentResponse> getById(Integer uuid) {
+    public Optional<EnrollmentResponse> getById(Long uuid) {
         Optional<Enrollment> enrollment = enrollmentRepository.findById(uuid);
         if (enrollment.isEmpty()) throw new IdNotFoundException("ENROLLMENT", uuid);
         return enrollment.map(enrollmentMapper::toEnrollmentResponse);

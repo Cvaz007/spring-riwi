@@ -12,6 +12,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnrollmentResponse {
-    private Integer id;
+    private Long id;
     private Date enrollmentDate;
 }

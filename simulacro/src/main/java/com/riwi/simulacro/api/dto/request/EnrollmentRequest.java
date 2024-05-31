@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnrollmentRequest {
-    private Integer userId;
-    private Integer courseId;
+    private Long userId;
+    private Long courseId;
     private Date enrollmentDate;
 }

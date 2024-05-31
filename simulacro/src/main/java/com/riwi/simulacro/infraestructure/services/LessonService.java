@@ -23,13 +23,13 @@ import java.util.Optional;
 public class LessonService implements ILessonService {
 
     @Autowired
-    private LessonRepository lessonRepository;
+    private final LessonRepository lessonRepository;
 
     @Autowired
-    private LessonMapper lessonMapper;
+    private final LessonMapper lessonMapper;
 
     @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     @Override
     public LessonResponse create(LessonRequest lessonRequest) {
@@ -43,7 +43,7 @@ public class LessonService implements ILessonService {
     }
 
     @Override
-    public LessonResponse update(Integer id, LessonRequest lessonRequest) {
+    public LessonResponse update(Long id, LessonRequest lessonRequest) {
         Lesson existingLesson = lessonRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("LESSON", id));
 
@@ -53,7 +53,7 @@ public class LessonService implements ILessonService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         lessonRepository.deleteById(id);
     }
 
@@ -64,7 +64,7 @@ public class LessonService implements ILessonService {
     }
 
     @Override
-    public Optional<LessonResponse> getById(Integer id) {
+    public Optional<LessonResponse> getById(Long id) {
         Optional<Lesson> lesson = lessonRepository.findById(id);
         if (lesson.isEmpty()) throw new IdNotFoundException("LESSON", id);
         return lesson.map(lessonMapper::toLessonResponse);

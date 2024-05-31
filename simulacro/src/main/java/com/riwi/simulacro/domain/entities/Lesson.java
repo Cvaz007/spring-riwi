@@ -17,6 +17,7 @@ import java.util.List;
 public class Lesson {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT(11)")
     private Integer id;
 

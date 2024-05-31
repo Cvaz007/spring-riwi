@@ -18,8 +18,9 @@ import java.util.List;
 public class Assignment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT(11)")
-    private Integer id;
+    private Long id;
 
     @Column(name = "assignment_title",length = 100)
     private String assignmentTitle;

@@ -22,13 +22,13 @@ import java.util.Optional;
 public class AssignmentService implements IAssignmentService {
 
     @Autowired
-    private AssignmentRepository assignmentRepository;
+    private final AssignmentRepository assignmentRepository;
 
     @Autowired
-    private AssignmentMapper assignmentMapper;
+    private final AssignmentMapper assignmentMapper;
 
     @Autowired
-    private LessonRepository lessonRepository;
+    private final LessonRepository lessonRepository;
 
     @Override
     public AssignmentResponse create(AssignmentRequest assignmentRequest) {
@@ -42,7 +42,7 @@ public class AssignmentService implements IAssignmentService {
     }
 
     @Override
-    public AssignmentResponse update(Integer id, AssignmentRequest assignmentRequest) {
+    public AssignmentResponse update(Long id, AssignmentRequest assignmentRequest) {
         Assignment existingAssignment = assignmentRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("ASSIGNMENT", id));
 
@@ -52,7 +52,7 @@ public class AssignmentService implements IAssignmentService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         assignmentRepository.deleteById(id);
     }
 
@@ -63,7 +63,7 @@ public class AssignmentService implements IAssignmentService {
     }
 
     @Override
-    public Optional<AssignmentResponse> getById(Integer id) {
+    public Optional<AssignmentResponse> getById(Long id) {
         Optional<Assignment> assignment = assignmentRepository.findById(id);
         if (assignment.isEmpty()) throw new IdNotFoundException("ASSIGNMENT", id);
         return assignment.map(assignmentMapper::toAssignmentResponse);

@@ -12,9 +12,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageRequest {
-    private Integer senderId;
-    private Integer receiverId;
-    private Integer courseId;
+    private Long senderId;
+    private Long receiverId;
+    private Long courseId;
     private String messageContent;
     private Date sentDate;
 }

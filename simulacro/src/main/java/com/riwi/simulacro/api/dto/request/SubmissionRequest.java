@@ -13,8 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubmissionRequest {
-    private Integer userId;
-    private Integer assignmentId;
+    private Long userId;
+    private Long assignmentId;
     private String content;
     private Date submissionDate;
     private BigDecimal grade;
