@@ -5,14 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnrollmentsRequest {
-    private Integer userId;
-    private Integer courseId;
-    private Date enrollmentDate;
+public class CourseRequest {
+    private String courseName;
+    private String description;
+    private Integer instructorId;
 }

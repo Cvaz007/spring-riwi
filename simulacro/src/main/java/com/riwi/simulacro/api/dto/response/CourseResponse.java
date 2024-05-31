@@ -1,4 +1,4 @@
-package com.riwi.simulacro.api.dto.request;
+package com.riwi.simulacro.api.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CoursesRequest {
+public class CourseResponse {
+    private Integer id;
     private String courseName;
     private String description;
-    private Integer instructorId;
 }
