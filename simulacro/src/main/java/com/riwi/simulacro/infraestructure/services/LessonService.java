@@ -1,10 +1,10 @@
 package com.riwi.simulacro.infraestructure.services;
 
-import com.riwi.simulacro.api.dto.request.LessonRequest;
+import com.riwi.simulacro.api.dto.request.create.LessonRequest;
+import com.riwi.simulacro.api.dto.request.update.LessonUpdateRequest;
 import com.riwi.simulacro.api.dto.response.LessonResponse;
 import com.riwi.simulacro.domain.entities.Course;
 import com.riwi.simulacro.domain.entities.Lesson;
-import com.riwi.simulacro.domain.entities.User;
 import com.riwi.simulacro.domain.repositories.CourseRepository;
 import com.riwi.simulacro.domain.repositories.LessonRepository;
 import com.riwi.simulacro.infraestructure.abstract_services.ILessonService;
@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,7 +44,7 @@ public class LessonService implements ILessonService {
     }
 
     @Override
-    public LessonResponse update(Long id, LessonRequest lessonRequest) {
+    public LessonResponse update(Long id, LessonUpdateRequest lessonRequest) {
         Lesson existingLesson = lessonRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("LESSON", id));
 

@@ -1,6 +1,6 @@
 package com.riwi.simulacro.infraestructure.mappers;
 
-import com.riwi.simulacro.api.dto.request.MessageRequest;
+import com.riwi.simulacro.api.dto.request.create.MessageRequest;
 import com.riwi.simulacro.api.dto.response.MessageResponse;
 import com.riwi.simulacro.domain.entities.Message;
 import org.mapstruct.Mapper;

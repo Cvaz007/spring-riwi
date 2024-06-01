@@ -1,6 +1,6 @@
 package com.riwi.simulacro.infraestructure.services;
 
-import com.riwi.simulacro.api.dto.request.SubmissionRequest;
+import com.riwi.simulacro.api.dto.request.create.SubmissionRequest;
 import com.riwi.simulacro.api.dto.response.SubmissionResponse;
 import com.riwi.simulacro.domain.entities.Assignment;
 import com.riwi.simulacro.domain.entities.Submission;

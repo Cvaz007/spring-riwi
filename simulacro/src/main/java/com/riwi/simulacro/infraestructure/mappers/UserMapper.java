@@ -1,6 +1,7 @@
 package com.riwi.simulacro.infraestructure.mappers;
 
-import com.riwi.simulacro.api.dto.request.UserRequest;
+import com.riwi.simulacro.api.dto.request.create.UserRequest;
+import com.riwi.simulacro.api.dto.request.update.UserUpdateRequest;
 import com.riwi.simulacro.api.dto.response.UserResponse;
 import com.riwi.simulacro.domain.entities.User;
 import org.mapstruct.Mapper;
@@ -14,5 +15,5 @@ public interface UserMapper {
 
     UserResponse toUserResponse(User user);
 
-    void updateFromUserRequest(UserRequest userRequest, @MappingTarget User user);
+    void updateFromUserRequest(UserUpdateRequest userRequest, @MappingTarget User user);
 }

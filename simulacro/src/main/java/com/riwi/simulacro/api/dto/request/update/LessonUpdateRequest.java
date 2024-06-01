@@ -1,4 +1,4 @@
-package com.riwi.simulacro.api.dto.request;
+package com.riwi.simulacro.api.dto.request.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LessonRequest {
+public class LessonUpdateRequest {
     private String lessonTitle;
     private String content;
-    private Long courseId;
 }

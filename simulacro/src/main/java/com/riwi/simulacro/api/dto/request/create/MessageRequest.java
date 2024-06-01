@@ -1,4 +1,4 @@
-package com.riwi.simulacro.api.dto.request;
+package com.riwi.simulacro.api.dto.request.create;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

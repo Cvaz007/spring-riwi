@@ -1,6 +1,7 @@
 package com.riwi.simulacro.api.controllers;
 
-import com.riwi.simulacro.api.dto.request.UserRequest;
+import com.riwi.simulacro.api.dto.request.create.UserRequest;
+import com.riwi.simulacro.api.dto.request.update.UserUpdateRequest;
 import com.riwi.simulacro.api.dto.response.UserResponse;
 import com.riwi.simulacro.infraestructure.abstract_services.IUserService;
 import lombok.AllArgsConstructor;
@@ -29,20 +30,15 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(
             @PathVariable Long id,
-            @Validated @RequestBody UserRequest userRequest
+            @Validated @RequestBody UserUpdateRequest userRequest
     ) {
         return ResponseEntity.ok(userService.update(id, userRequest));
     }
 
-    @GetMapping
-    public ResponseEntity<Page<UserResponse>> getAllUsers(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size
-    ) {
-        Pageable pageable = PageRequest.of(page, size);
-        if (page != 0)
-            pageable = PageRequest.of(page - 1, size);
-        return ResponseEntity.ok(userService.getAll(pageable));
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")

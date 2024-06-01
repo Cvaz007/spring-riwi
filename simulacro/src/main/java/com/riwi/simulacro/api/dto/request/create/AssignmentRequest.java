@@ -1,5 +1,6 @@
-package com.riwi.simulacro.api.dto.request;
+package com.riwi.simulacro.api.dto.request.create;
 
+import com.riwi.simulacro.api.dto.request.update.AssignmentUpdateRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,6 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssignmentRequest {
-    private String assignmentTitle;
-    private String description;
-    private Date dueDate;
+public class AssignmentRequest extends AssignmentUpdateRequest {
     private Long lessonId;
 }

@@ -1,6 +1,7 @@
 package com.riwi.simulacro.infraestructure.mappers;
 
-import com.riwi.simulacro.api.dto.request.LessonRequest;
+import com.riwi.simulacro.api.dto.request.create.LessonRequest;
+import com.riwi.simulacro.api.dto.request.update.LessonUpdateRequest;
 import com.riwi.simulacro.api.dto.response.LessonResponse;
 import com.riwi.simulacro.domain.entities.Lesson;
 import org.mapstruct.Mapper;
@@ -18,6 +19,5 @@ public interface LessonMapper {
 
     LessonResponse toLessonResponse(Lesson lesson);
 
-    @Mapping(target = "courseId.id", source = "courseId")
-    void updateFromLessonRequest(LessonRequest lessonRequest, @MappingTarget Lesson lesson);
+    void updateFromLessonRequest(LessonUpdateRequest lessonRequest, @MappingTarget Lesson lesson);
 }

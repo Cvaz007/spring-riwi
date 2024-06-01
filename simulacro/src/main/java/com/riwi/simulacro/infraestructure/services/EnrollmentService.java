@@ -1,6 +1,6 @@
 package com.riwi.simulacro.infraestructure.services;
 
-import com.riwi.simulacro.api.dto.request.EnrollmentRequest;
+import com.riwi.simulacro.api.dto.request.create.EnrollmentRequest;
 import com.riwi.simulacro.api.dto.response.EnrollmentResponse;
 import com.riwi.simulacro.domain.entities.Course;
 import com.riwi.simulacro.domain.entities.Enrollment;

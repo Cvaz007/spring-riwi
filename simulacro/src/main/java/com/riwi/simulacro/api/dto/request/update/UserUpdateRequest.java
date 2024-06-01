@@ -1,4 +1,4 @@
-package com.riwi.simulacro.api.dto.request;
+package com.riwi.simulacro.api.dto.request.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
+public class UserUpdateRequest {
     private String userName;
     private String password;
     private String email;
     private String fullName;
-    private String role;
 }

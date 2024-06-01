@@ -1,9 +1,9 @@
 package com.riwi.simulacro.infraestructure.services;
 
-import com.riwi.simulacro.api.dto.request.UserRequest;
+import com.riwi.simulacro.api.dto.request.create.UserRequest;
+import com.riwi.simulacro.api.dto.request.update.UserUpdateRequest;
 import com.riwi.simulacro.api.dto.response.UserResponse;
 import com.riwi.simulacro.domain.entities.User;
-import com.riwi.simulacro.domain.entities.Lesson;
 import com.riwi.simulacro.domain.repositories.UserRepository;
 import com.riwi.simulacro.infraestructure.abstract_services.IUserService;
 import com.riwi.simulacro.infraestructure.mappers.UserMapper;
@@ -35,7 +35,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse update(Long id, UserRequest userRequest) {
+    public UserResponse update(Long id, UserUpdateRequest userRequest) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("ASSIGNMENT", id));
 

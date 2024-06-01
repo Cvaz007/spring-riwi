@@ -1,6 +1,7 @@
 package com.riwi.simulacro.infraestructure.mappers;
 
-import com.riwi.simulacro.api.dto.request.CourseRequest;
+import com.riwi.simulacro.api.dto.request.create.CourseRequest;
+import com.riwi.simulacro.api.dto.request.update.CourseUpdateRequest;
 import com.riwi.simulacro.api.dto.response.CourseResponse;
 import com.riwi.simulacro.domain.entities.Course;
 import org.mapstruct.Mapper;
@@ -17,7 +18,5 @@ public interface CourseMapper {
     Course toCourse(CourseRequest courseRequest);
 
     CourseResponse toCourseResponse(Course course);
-
-    @Mapping(target = "instructorId.id", source = "instructorId")
-    void updateFromCourseRequest(CourseRequest courseRequest, @MappingTarget Course course);
+    void updateFromCourseRequest(CourseUpdateRequest courseRequest, @MappingTarget Course course);
 }

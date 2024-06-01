@@ -1,6 +1,7 @@
 package com.riwi.simulacro.infraestructure.services;
 
-import com.riwi.simulacro.api.dto.request.CourseRequest;
+import com.riwi.simulacro.api.dto.request.create.CourseRequest;
+import com.riwi.simulacro.api.dto.request.update.CourseUpdateRequest;
 import com.riwi.simulacro.api.dto.response.CourseResponse;
 import com.riwi.simulacro.domain.entities.Course;
 import com.riwi.simulacro.domain.entities.User;
@@ -42,7 +43,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public CourseResponse update(Long id, CourseRequest courseRequest) {
+    public CourseResponse update(Long id, CourseUpdateRequest courseRequest) {
         Course existingCourse = courseRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("COURSE", id));
 
