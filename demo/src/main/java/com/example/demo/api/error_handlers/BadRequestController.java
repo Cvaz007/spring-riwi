@@ -1,8 +1,8 @@
 package com.example.demo.api.error_handlers;
 
-import com.example.demo.api.dto.request.errors.BaseErrorResponse;
-import com.example.demo.api.dto.request.errors.ErrorResponse;
-import com.example.demo.api.dto.request.errors.ErrorsResponse;
+import com.example.demo.api.dto.errors.BaseErrorResponse;
+import com.example.demo.api.dto.errors.ErrorResponse;
+import com.example.demo.api.dto.errors.ErrorsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;

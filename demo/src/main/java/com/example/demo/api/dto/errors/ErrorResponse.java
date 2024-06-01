@@ -1,4 +1,4 @@
-package com.example.demo.api.dto.request.errors;
+package com.example.demo.api.dto.errors;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

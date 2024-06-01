@@ -5,15 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
-@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectRequest extends ProjectUpdateRequest {
     private Date startDate;
+    private List<FileRequest> files;
 }

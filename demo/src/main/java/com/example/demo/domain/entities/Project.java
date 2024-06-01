@@ -39,7 +39,7 @@ public class Project {
     private List<File> files = new ArrayList<>();
 
     @OneToMany(
-            mappedBy = "userId",
+            mappedBy = "projectId",
             cascade = CascadeType.ALL,
             orphanRemoval = false,
             fetch = FetchType.EAGER

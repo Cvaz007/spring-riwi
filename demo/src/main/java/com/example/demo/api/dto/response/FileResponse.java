@@ -13,5 +13,5 @@ public class FileResponse {
     private String name;
     private String description;
     private String type;
-    private Project projectId;
+    private ProjectResponse projectId;
 }

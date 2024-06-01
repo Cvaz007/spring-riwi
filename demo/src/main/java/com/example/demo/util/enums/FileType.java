@@ -1,7 +1,7 @@
 package com.example.demo.util.enums;
 
 public enum FileType {
-    PSF,
+    PDF,
     JPG,
     PNG,
 }
