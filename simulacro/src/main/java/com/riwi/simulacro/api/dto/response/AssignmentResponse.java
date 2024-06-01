@@ -13,5 +13,5 @@ public class AssignmentResponse {
     private String assignmentTitle;
     private String description;
     private Date dueDate;
-
+    private LessonResponse lessonId;
 }

@@ -14,4 +14,6 @@ import java.util.Date;
 public class EnrollmentResponse {
     private Long id;
     private Date enrollmentDate;
+    private CourseResponse courseId;
+    private UserResponse userId;
 }

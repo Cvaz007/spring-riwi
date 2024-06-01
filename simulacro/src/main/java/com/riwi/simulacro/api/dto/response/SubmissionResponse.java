@@ -17,5 +17,6 @@ public class SubmissionResponse {
     private String content;
     private Date submissionDate;
     private BigDecimal grade;
-
+    private UserResponse userId;
+    private AssignmentResponse assignmentId;
 }
