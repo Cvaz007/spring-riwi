@@ -1,6 +1,7 @@
 package com.riwi.simulacro.infraestructure.services;
 
 import com.riwi.simulacro.api.dto.request.create.SubmissionRequest;
+import com.riwi.simulacro.api.dto.request.update.SubmissionUpdateRequest;
 import com.riwi.simulacro.api.dto.response.SubmissionResponse;
 import com.riwi.simulacro.domain.entities.Assignment;
 import com.riwi.simulacro.domain.entities.Submission;
@@ -50,7 +51,7 @@ public class SubmissionService implements ISubmissionService {
     }
 
     @Override
-    public SubmissionResponse update(Long id, SubmissionRequest submissionRequest) {
+    public SubmissionResponse update(Long id, SubmissionUpdateRequest submissionRequest) {
         Submission existingSubmission = submissionRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("ENROLLMENT", id));
 
@@ -75,5 +76,21 @@ public class SubmissionService implements ISubmissionService {
         Optional<Submission> submission = submissionRepository.findById(uuid);
         if (submission.isEmpty()) throw new IdNotFoundException("ENROLLMENT", uuid);
         return submission.map(submissionMapper::toSubmissionResponse);
+    }
+
+    @Override
+    public Page<SubmissionResponse> findByAssignmentId(Pageable pageable, Long assignmentId) {
+        Assignment assignment = assignmentRepository.findById(assignmentId)
+                .orElseThrow(() -> new IdNotFoundException("COURSE", assignmentId));
+        Page<Submission> submissionPage = submissionRepository.findByAssignmentId(assignment, pageable);
+        return submissionPage.map(submissionMapper::toSubmissionResponse);
+    }
+
+    @Override
+    public Page<SubmissionResponse> findByUserId(Pageable pageable, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IdNotFoundException("USER", userId));
+        Page<Submission> submissionPage = submissionRepository.findByUserId(user, pageable);
+        return submissionPage.map(submissionMapper::toSubmissionResponse);
     }
 }

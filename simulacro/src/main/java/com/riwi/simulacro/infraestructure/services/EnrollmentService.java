@@ -49,16 +49,6 @@ public class EnrollmentService implements IEnrollmentService {
     }
 
     @Override
-    public EnrollmentResponse update(Long id, EnrollmentRequest enrollmentRequest) {
-        Enrollment existingEnrollment = enrollmentRepository.findById(id)
-                .orElseThrow(() -> new IdNotFoundException("ENROLLMENT", id));
-
-        enrollmentMapper.updateFromEnrollmentRequest(enrollmentRequest, existingEnrollment);
-        Enrollment updateEnrollment = enrollmentRepository.save(existingEnrollment);
-        return enrollmentMapper.toEnrollmentResponse(updateEnrollment);
-    }
-
-    @Override
     public void delete(Long uuid) {
         enrollmentRepository.deleteById(uuid);
     }
@@ -74,5 +64,21 @@ public class EnrollmentService implements IEnrollmentService {
         Optional<Enrollment> enrollment = enrollmentRepository.findById(uuid);
         if (enrollment.isEmpty()) throw new IdNotFoundException("ENROLLMENT", uuid);
         return enrollment.map(enrollmentMapper::toEnrollmentResponse);
+    }
+
+    @Override
+    public Page<EnrollmentResponse> findByUserId(Long userId, Pageable pageable) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IdNotFoundException("USER", userId));
+        Page<Enrollment> enrollmentPage = enrollmentRepository.findByUserId(user, pageable);
+        return enrollmentPage.map(enrollmentMapper::toEnrollmentResponse);
+    }
+
+    @Override
+    public Page<EnrollmentResponse> findByCourseId(Long courseId, Pageable pageable) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new IdNotFoundException("COURSE", courseId));
+        Page<Enrollment> enrollmentPage = enrollmentRepository.findByCourseId(course, pageable);
+        return enrollmentPage.map(enrollmentMapper::toEnrollmentResponse);
     }
 }

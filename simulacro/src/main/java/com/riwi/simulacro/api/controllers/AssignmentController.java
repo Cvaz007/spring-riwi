@@ -50,7 +50,7 @@ public class AssignmentController {
         Pageable pageable = PageRequest.of(page, size);
         if (page != 0)
             pageable = PageRequest.of(page - 1, size);
-        return ResponseEntity.ok(assignmentService.findByLessonIdContaining(pageable,lessonId));
+        return ResponseEntity.ok(assignmentService.findByLessonId(pageable,lessonId));
     }
 
     @GetMapping("/{id}")

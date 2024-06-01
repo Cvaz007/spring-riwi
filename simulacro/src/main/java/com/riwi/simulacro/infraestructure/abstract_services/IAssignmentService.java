@@ -6,6 +6,9 @@ import com.riwi.simulacro.api.dto.response.AssignmentResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface IAssignmentService extends CreateReadDeleteService<AssignmentRequest, AssignmentResponse, Long>, UpdateService<AssignmentUpdateRequest, AssignmentResponse, Long> {
-    Page<AssignmentResponse> findByLessonIdContaining(Pageable pageable, Long lessonId);
+public interface IAssignmentService extends
+        CreateReadDeleteService<AssignmentRequest, AssignmentResponse, Long>,
+        UpdateService<AssignmentUpdateRequest, AssignmentResponse, Long>
+{
+    Page<AssignmentResponse> findByLessonId(Pageable pageable, Long lessonId);
 }

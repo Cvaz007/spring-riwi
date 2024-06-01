@@ -1,6 +1,7 @@
 package com.riwi.simulacro.infraestructure.mappers;
 
 import com.riwi.simulacro.api.dto.request.create.SubmissionRequest;
+import com.riwi.simulacro.api.dto.request.update.SubmissionUpdateRequest;
 import com.riwi.simulacro.api.dto.response.SubmissionResponse;
 import com.riwi.simulacro.domain.entities.Submission;
 import org.mapstruct.Mapper;
@@ -19,9 +20,5 @@ public interface SubmissionMapper {
 
     SubmissionResponse toSubmissionResponse(Submission submission);
 
-    @Mappings({
-            @Mapping(target = "assignmentId.id", source = "assignmentId"),
-            @Mapping(target = "userId.id", source = "userId")
-    })
-    void updateFromSubmissionRequest(SubmissionRequest submissionRequest, @MappingTarget Submission submission);
+    void updateFromSubmissionRequest(SubmissionUpdateRequest submissionRequest, @MappingTarget Submission submission);
 }

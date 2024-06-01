@@ -3,7 +3,6 @@ package com.riwi.simulacro.infraestructure.services;
 import com.riwi.simulacro.api.dto.request.create.AssignmentRequest;
 import com.riwi.simulacro.api.dto.request.update.AssignmentUpdateRequest;
 import com.riwi.simulacro.api.dto.response.AssignmentResponse;
-import com.riwi.simulacro.api.dto.response.LessonResponse;
 import com.riwi.simulacro.domain.entities.Assignment;
 import com.riwi.simulacro.domain.entities.Lesson;
 import com.riwi.simulacro.domain.repositories.AssignmentRepository;
@@ -72,7 +71,7 @@ public class AssignmentService implements IAssignmentService {
     }
 
     @Override
-    public Page<AssignmentResponse> findByLessonIdContaining(Pageable pageable, Long lessonId) {
+    public Page<AssignmentResponse> findByLessonId(Pageable pageable, Long lessonId) {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new IdNotFoundException("LESSON", lessonId));
 

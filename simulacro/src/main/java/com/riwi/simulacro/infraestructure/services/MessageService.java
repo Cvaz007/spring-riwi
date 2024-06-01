@@ -79,4 +79,24 @@ public class MessageService implements IMessageService {
         if (message.isEmpty()) throw new IdNotFoundException("LESSON", id);
         return message.map(messageMapper::toMessageResponse);
     }
+
+    @Override
+    public Page<MessageResponse> findByCourseId(Pageable pageable, Long courseId) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new IdNotFoundException("COURSE", courseId));
+
+        Page<Message> messagePage = messageRepository.findByCourseId(course, pageable);
+        return messagePage.map(messageMapper::toMessageResponse);
+    }
+
+    @Override
+    public Page<MessageResponse> findBySenderAndReceiver(Pageable pageable, Long senderId, Long receiverId) {
+        User sender = userRepository.findById(senderId)
+                .orElseThrow(() -> new IdNotFoundException("USER", senderId));
+        User receiver = userRepository.findById(receiverId)
+                .orElseThrow(() -> new IdNotFoundException("USER", receiverId));
+
+        Page<Message> messagePage = messageRepository.findBySenderIdAndReceiverId(sender, receiver, pageable);
+        return messagePage.map(messageMapper::toMessageResponse);
+    }
 }

@@ -1,5 +1,6 @@
 package com.riwi.simulacro.api.dto.request.create;
 
+import com.riwi.simulacro.api.dto.request.update.SubmissionUpdateRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,10 +13,8 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubmissionRequest {
+public class SubmissionRequest extends SubmissionUpdateRequest {
     private Long userId;
     private Long assignmentId;
-    private String content;
     private Date submissionDate;
-    private BigDecimal grade;
 }
