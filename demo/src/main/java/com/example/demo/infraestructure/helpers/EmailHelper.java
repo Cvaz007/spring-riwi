@@ -25,12 +25,12 @@ public class EmailHelper {
     //Funcion para leer el email
     private String readHTMLTemplate(String description, String title, String date){
         //Indicar en donde se encuentra el template
-        final Path path = Paths.get("src/main/resources/emails/email_template.html");
+        final Path path = Paths.get("C:\\Users\\User\\Documents\\Estudio programación\\spring-riwi\\demo\\src\\main\\resources\\emails\\email_template.html");
 
         try (var lines = Files.lines(path)){
             var html = lines.collect(Collectors.joining());
 
-            return html.replace("{description}", description).replace("{tile}", title).replace("{date}", date);
+            return html.replace("{employee}", description).replace("{name}", title).replace("{date}", date);
         } catch (IOException e) {
             System.out.println("File could not be read "+e.getMessage());
             throw new RuntimeException();
