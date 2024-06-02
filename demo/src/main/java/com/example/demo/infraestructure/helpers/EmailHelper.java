@@ -30,7 +30,7 @@ public class EmailHelper {
         try (var lines = Files.lines(path)){
             var html = lines.collect(Collectors.joining());
 
-            return html.replace("{employee}", description).replace("{name}", title).replace("{date}", date);
+            return html.replace("{description}", description).replace("{title}", title).replace("{date}", date);
         } catch (IOException e) {
             System.out.println("File could not be read "+e.getMessage());
             throw new RuntimeException();
