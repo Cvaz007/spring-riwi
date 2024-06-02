@@ -11,6 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 public class AssigneeResponse {
     private Long id;
-    private Project projectId;
-    private User userId;
+    private ProjectResponse projectId;
+    private UserResponse userId;
 }
