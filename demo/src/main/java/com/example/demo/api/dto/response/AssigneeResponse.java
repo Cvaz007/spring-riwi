@@ -1,7 +1,5 @@
 package com.example.demo.api.dto.response;
 
-import com.example.demo.domain.entities.Project;
-import com.example.demo.domain.entities.User;
 import lombok.*;
 
 @Setter
@@ -11,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 public class AssigneeResponse {
     private Long id;
-    private Project projectId;
-    private User userId;
+    private ProjectResponse projectId;
+    private UserResponse userId;
 }

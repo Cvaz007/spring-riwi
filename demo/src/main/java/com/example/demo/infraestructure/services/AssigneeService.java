@@ -9,6 +9,7 @@ import com.example.demo.domain.repositories.AssigneeRepository;
 import com.example.demo.domain.repositories.ProjectRepository;
 import com.example.demo.domain.repositories.UserRepository;
 import com.example.demo.infraestructure.abstract_services.IAssigneeService;
+import com.example.demo.infraestructure.helpers.EmailHelper;
 import com.example.demo.infraestructure.mappers.AssigneeMapper;
 import com.example.demo.util.exeptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -30,6 +33,8 @@ public class AssigneeService implements IAssigneeService {
     private final ProjectRepository projectRepository;
     @Autowired
     private final UserRepository userRepository;
+    @Autowired
+    private final EmailHelper emailHelper;
 
     @Override
     public AssigneeResponse create(AssigneeRequest assigneeRequest) {
@@ -42,6 +47,8 @@ public class AssigneeService implements IAssigneeService {
         assignee.setProjectId(project);
         assignee.setUserId(user);
         Assignee saveAssignee = assigneeRepository.save(assignee);
+        if (Objects.nonNull(user.getEmail()))
+            emailHelper.sendEmail(user.getEmail(), "Asignado a un proyecto: "+project.getName(),"Felicidades te han cambiado de proyecto", LocalDateTime.now());
         return assigneeMapper.toAssigneeResponse(saveAssignee);
     }
 
